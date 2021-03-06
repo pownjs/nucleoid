@@ -4,6 +4,8 @@
 ![default workflow](https://nucleoidhub.com/pownjs/nucleoid/actions/workflows/default.yaml/badge.svg)
 [![SecApps](https://img.shields.io/badge/credits-SecApps-black.svg)](https://secapps.com)
 
+> **WARNING**: This project is a giant experiment.
+
 # Pown Nucleoid
 
 Pown Nucleoid (nuc for short) is an execution environment, transpiler and summarizer for nuclei-templates. The project has the following goals:
@@ -96,13 +98,16 @@ $ POWN_ROOT=. pown nucleoid
 pown-cli nucleoid <command>
 
 Commands:
-  pown-cli nucleoid invoke <template> <target>  [aliases: i]
+  pown-cli nucleoid invoke <template> <target>  Invokes a single template against a single target.  [aliases: i]
+  pown-cli nucleoid download <dir>              Download the latest templates into a directory.  [aliases: d]
 
 Options:
   --version  Show version number  [boolean]
   --help     Show help  [boolean]
 
 pown-cli nucleoid invoke <template> <target>
+
+Invokes a single template against a single target.
 
 Options:
   --version                                                                   Show version number  [boolean]
