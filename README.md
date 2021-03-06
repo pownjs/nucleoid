@@ -2,12 +2,35 @@
 [![NPM](https://img.shields.io/npm/v/@pown/nucleoid.svg)](https://www.npmjs.com/package/@pown/nucleoid)
 [![Fury](https://img.shields.io/badge/version-2x%20Fury-red.svg)](https://nucleoidhub.com/pownjs/lobby)
 ![default workflow](https://nucleoidhub.com/pownjs/nucleoid/actions/workflows/default.yaml/badge.svg)
+[![SecApps](https://img.shields.io/badge/credits-SecApps-black.svg)](https://secapps.com)
 
 # Pown Nucleoid
 
-Pown Nucleoid (nuc for short) is an execution environment and transpiler for nuclei-templates. Unlike nuclei, which is effectively an interpreter, pown nucleoid is run
+Pown Nucleoid (nuc for short) is an execution environment transpiler and summarizer for nuclei-templates. The project has the following goals:
+
+1. Provide alternative nuclei template execution environment.
+1. Provide embeddable way to consume nuclei templates.
+2. Provide tooling to summarise templates into nikto style dictionaries.
+3. Provide a template to code transpiler.
+
+## Why Dictionaries
+
+Most Nuclei templates do not have advanced logic. Most templates simply instruct the interpreter to perform several requests and check the results using the matcher syntax. Rather then executing individual templates, we can boil them down to a simple dictionary (basically what nikto is doing) which can be easily traversed, pipelines, etc. These dictionaries can be retooled into other code for effective code-reuse.
+
+## Why Transpiler
+
+Unlike Nuclei, which is effectively an interpreter written in go, Nucleoid builds JavaScript code. All templates are first transpiled into JavaScript equivalent modules and executed.
+
+The benefits of this approach are a few:
+
+1. The V8 engine backing Node is much more advanced to optimise hot code paths then a simple interpreter. This helps when performing large scans.
+2. The Nuclei templating language is limited. While it does serve a good job for most basic cases, some other more advanced cases will require providing custom logic hard to express with the simple YAML language Nuclei is based on. Thus, having a transpiled script to work from is an excellent starting to optimise performance and extend tests with more advanced features.
+3. Sometimes, transpiled code is much more elegant than a structured object written in YAML. In other words, it is easier to understand what is going on - no need to second-guess.
+4. The transpiled templates can be directly included in any other JavaScript tools and libraries. Import this npm module and include it as you wish. You can even run tests from your very own browser if this is what you want. Build your tools as you see fit!
 
 ## Credits
+
+All credits go to projectdiscovery and [Nuclei](https://github.com/projectdiscovery/nuclei/).
 
 This tool is part of [secapps.com](https://secapps.com) open-source initiative.
 
@@ -70,9 +93,28 @@ $ POWN_ROOT=. pown nucleoid
 > **WARNING**: This pown command is currently under development and as a result will be subject to breaking changes.
 
 ```
-{{usage}}
+pown-cli nucleoid <command>
+
+Commands:
+  pown-cli nucleoid invoke <template> <target>  [aliases: i]
+
+Options:
+  --version  Show version number  [boolean]
+  --help     Show help  [boolean]
+
+pown-cli nucleoid invoke <template> <target>
+
+Options:
+  --version                                                                   Show version number  [boolean]
+  --help                                                                      Show help  [boolean]
+  --request-concurrency, -c                                                   The number of requests to send at the same time  [number] [default: Infinity]
+  --filter-response-code, --response-code, --code, --filter-status, --status  Filter responses with code  [string] [default: ""]
+  --content-sniff-size, --content-sniff, --sniff, --sniff-size                Specify the size of the content sniff  [number] [default: 5]
+  --print                                                                     Print response body  [boolean] [default: false]
+  --download, --output                                                        Download response body  [boolean] [default: false]
+  --proxy-url, --proxy                                                        Setup proxy  [string] [default: ""]
 ```
 
 ## How To Contribute
 
-See [pown/leaks](https://github.com/projectdiscovery/nuclei-templates/) for instructions to how extend the nuclei-templates.
+See [nuclei-templates](https://github.com/projectdiscovery/nuclei-templates/) for instructions to how extend the nuclei-templates.
