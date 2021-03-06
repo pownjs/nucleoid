@@ -1,0 +1,55 @@
+{
+  "name": "@pown/nucleoid",
+  "version": "2.0.0",
+  "description": "Pownage guaranteed",
+  "main": "lib/index.js",
+  "scripts": {
+    "nucleoid": "POWN_ROOT=. pown-cli nucleoid",
+    "usage": "POWN_ROOT=. pown-cli nucleoid --help; echo; POWN_ROOT=. pown-cli nucleoid invoke --help",
+    "build": "true",
+    "test": "true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pownjs/pown-git.git"
+  },
+  "keywords": [
+    "exploit",
+    "framework"
+  ],
+  "author": "pdp <pdp@gnucitizen.org>",
+  "contributors": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pownjs/pown-git/issues"
+  },
+  "homepage": "https://github.com/pownjs/pown-git#readme",
+  "devDependencies": {
+    "@pown/cli": "^2.29.0",
+    "@pown/toolchain": "^2.1.0"
+  },
+  "dependencies": {
+    "@pown/async": "^2.5.0",
+    "@pown/regexp": "^2.1.0",
+    "@pown/request": "^2.22.0",
+    "js-yaml": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=10.5.0"
+  },
+  "pown": {
+    "commands": [
+      "commands/nucleoid"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "extends": "./.babelrc"
+        }
+      ]
+    ]
+  }
+}
