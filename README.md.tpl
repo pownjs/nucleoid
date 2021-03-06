@@ -1,7 +1,7 @@
 [![Follow on Twitter](https://img.shields.io/twitter/follow/pownjs.svg?logo=twitter)](https://twitter.com/pownjs)
 [![NPM](https://img.shields.io/npm/v/@pown/nucleoid.svg)](https://www.npmjs.com/package/@pown/nucleoid)
 [![Fury](https://img.shields.io/badge/version-2x%20Fury-red.svg)](https://nucleoidhub.com/pownjs/lobby)
-![default workflow](https://nucleoidhub.com/pownjs/nucleoid/actions/workflows/default.yaml/badge.svg)
+![default workflow](https://github.com/pownjs/nucleoid/actions/workflows/default.yaml/badge.svg)
 [![SecApps](https://img.shields.io/badge/credits-SecApps-black.svg)](https://secapps.com)
 
 > **WARNING**: This project is a giant experiment.
@@ -19,16 +19,16 @@ Pown Nucleoid (nuc for short) is an execution environment, transpiler and summar
 
 Most Nuclei templates do not have advanced logic. Most templates instruct the interpreter to perform several requests and check the results using the matcher syntax. Rather than executing individual templates, we can boil them down to a simple dictionary (basically what nikto is doing), easily traversed, pipelined, etc. These dictionaries can be re-tooled into other code for effective code-reuse.
 
-## Why Transpiler
+## Why Transpile
 
 Unlike Nuclei, which is effectively an interpreter written in go, Nucleoid builds JavaScript code. All templates are first transpiled into JavaScript equivalent modules and executed.
 
 The benefits of this approach are a few:
 
 1. The V8 engine backing Node is much more advanced to optimize hot code paths then a simple interpreter. This helps when performing large scans.
-2. The Nuclei templating language is limited. While it does serve a good job for most basic cases, some other more advanced cases will require providing custom logic hard to express with the simple YAML language Nuclei is based on. Thus, having a transpiled script to work from is an excellent starting to optimize performance and extend tests with more advanced features.
+2. The Nuclei templating language is limited. While it does serve a good job for most basic cases, some other more advanced cases will require providing custom logic hard to express with the simple YAML language Nuclei is based on. Thus, having a transpiled script to work from is an excellent starting point to optimize performance and extend tests with more advanced features.
 3. Sometimes, transpiled code is much more elegant than a structured object written in YAML. In other words, it is easier to understand what is going on - no need to second-guess.
-4. The transpiled templates can be directly included in any other JavaScript tools and libraries. Import this npm module and have it as you wish. You can even run tests from your very own browser if this is what you want. Build your tools as you see fit!
+4. The transpiled templates can be directly included in other JavaScript tools and libraries. Import this npm module and have it as you wish. You can even run tests from your very own browser if this is what you want. Build your tools as you see fit!
 
 ## Credits
 
