@@ -11,9 +11,10 @@
 Pown Nucleoid (nuc for short) is an execution environment, transpiler and summarizer for nuclei-templates. The project has the following goals:
 
 1. Provide an alternative nuclei template execution environment.
-1. Provide an embeddable way to consume nuclei templates.
-2. Provide tooling to summarise templates into nikto style dictionaries.
-3. Provide a template-to-code transpiler.
+2. Provide an embeddable way to consume nuclei templates.
+3. Provide the ability to create complex workflows by composition.
+4. Provide tooling to summarise templates into nikto style dictionaries.
+5. Provide a template-to-code transpiler.
 
 ## Why Dictionaries
 
