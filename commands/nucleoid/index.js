@@ -5,5 +5,6 @@ exports.yargs = {
 
     builder: (yargs) => {
         yargs.command(require('./sub/invoke').yargs)
+        yargs.command(require('./sub/download').yargs)
     }
 }
