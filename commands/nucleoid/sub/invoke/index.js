@@ -1,6 +1,6 @@
 exports.yargs = {
     command: 'invoke <template> <target>',
-    describe: '',
+    describe: 'Invokes a single template against a single target.',
     aliases: ['i'],
 
     builder: {
@@ -12,6 +12,7 @@ exports.yargs = {
     handler: async(argv) => {
         const { template, target } = argv
 
+        const { extname } = require('path')
         const { readFile } = require('fs')
         const { promisify } = require('util')
 
@@ -19,9 +20,16 @@ exports.yargs = {
 
         const data = await readFileAsync(template)
 
-        const jsYaml = require('js-yaml')
+        let doc
 
-        const doc = jsYaml.load(data, 'utf-8')
+        if (extname(template) === '.json') {
+            doc = JSON.parse(template)
+        }
+        else {
+            const jsYaml = require('js-yaml')
+
+            doc = jsYaml.load(data, 'utf-8')
+        }
 
         const { Template } = require('../../../../lib/template')
         const { Scheduler } = require('../../../../lib/template/scheduler')
