@@ -5,6 +5,7 @@ exports.yargs = {
 
     builder: {
         ...require('@pown/request/commands/request/options/scheduler'),
+        ...require('@pown/request/commands/request/options/request'),
         ...require('@pown/request/commands/request/options/output'),
         ...require('@pown/request/commands/request/options/proxy')
     },
@@ -37,11 +38,16 @@ exports.yargs = {
         const scheduler = new Scheduler({ base: target })
 
         require('@pown/request/commands/request/options/scheduler/handler').init(argv, scheduler)
+        require('@pown/request/commands/request/options/request/handler').init(argv, scheduler)
         require('@pown/request/commands/request/options/output/handler').init(argv, scheduler)
         require('@pown/request/commands/request/options/proxy/handler').init(argv, scheduler)
 
         const tpl = new Template(doc)
 
-        await tpl.run({ scheduler })
+        const result = await tpl.run({ scheduler })
+
+        if (result) {
+            console.info(`matches template ${JSON.stringify(doc.id)}`)
+        }
     }
 }
