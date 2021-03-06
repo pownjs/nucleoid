@@ -4,6 +4,8 @@
 ![default workflow](https://nucleoidhub.com/pownjs/nucleoid/actions/workflows/default.yaml/badge.svg)
 [![SecApps](https://img.shields.io/badge/credits-SecApps-black.svg)](https://secapps.com)
 
+> **WARNING**: This project is a giant experiment.
+
 # Pown Nucleoid
 
 Pown Nucleoid (nuc for short) is an execution environment, transpiler and summarizer for nuclei-templates. The project has the following goals:
