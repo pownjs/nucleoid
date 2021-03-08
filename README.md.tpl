@@ -13,8 +13,10 @@ Pown Nucleoid (nuc for short) is an execution environment, transpiler and summar
 1. Provide an alternative nuclei template execution environment.
 2. Provide an embeddable way to consume nuclei templates.
 3. Provide the ability to create complex workflows by composition.
-4. Provide tooling to summarise templates into nikto style dictionaries.
-5. Provide a template-to-code transpiler.
+4. Provide means to extend templates with new feautres (new matchers, test-cases, etc).
+5. Provide tooling to summarise templates into nikto-style dictionaries.
+6. Provide a template-to-code transpiler.
+7. Provide built-in tests to ensure templates are doing what they are designed to do.
 
 ## Why Dictionaries
 
